@@ -17,12 +17,12 @@ export const Show = () => {
 
 
     //2- Referenciamos a la DB firestore
-    const booksCollection = collection(db, "books");
+    const booksCollection = collection(db,"books");
 
     //3- creamos funcion para mostrar TODOS los docs
     const getBooks = async () => {
         const data = await getDocs(booksCollection)
-        //console.log(data.docs );
+        console.log(data.docs );
         setBooks(
             data.docs.map((doc) =>({...doc.data(), id:doc.id}))
         )
@@ -33,11 +33,10 @@ export const Show = () => {
 
     //5- creamos una funcion de confirmacion para sweetalert
 
-    //6-usamos useEffect
+    //6-usamos useEffect 
 
     useEffect(() => {
         getBooks()
-        //eslint-disable-next-line
     }, [])
 
 
